@@ -156,6 +156,7 @@ static Key keys[] = {
 	{ 0, XF86XK_Tools,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
+	{ MODKEY|ShiftMask,		XK_n,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ranger", NULL } } },	
 	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
 	{ MODKEY,			XK_Tab,           shiftview,  { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Tab,           shiftview,  { .i = -1 } },
