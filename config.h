@@ -90,6 +90,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
+#include "shiftview.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -122,7 +123,7 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_Escape,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
@@ -156,7 +157,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
 	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
-	{ MODKEY,			XK_ntilde,	spawn,		SHCMD("") },
+	{ MODKEY,			XK_Tab,           shiftview,  { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Tab,           shiftview,  { .i = -1 } },
 };
 
 /* button definitions */
