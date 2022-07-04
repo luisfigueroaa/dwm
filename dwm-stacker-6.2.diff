@@ -1,5 +1,56 @@
---- dwm.c
-+++ dwm.c
+From d04f2d00688c8b0969d4f10f460c980dd91dac37 Mon Sep 17 00:00:00 2001
+From: MLquest8 <miskuzius@gmail.com>
+Date: Fri, 12 Jun 2020 16:04:18 +0400
+Subject: [PATCH] stacker updated for version 6.2
+
+---
+ config.def.h | 14 +++++++--
+ dwm.c        | 88 ++++++++++++++++++++++++++++++++++++++++------------
+ 2 files changed, 80 insertions(+), 22 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1c0b587..d28f8fc 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -50,6 +50,14 @@ static const Layout layouts[] = {
+ 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+ 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+ 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
++#define STACKKEYS(MOD,ACTION) \
++	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
++	{ MOD, XK_k,     ACTION##stack, {.i = INC(-1) } }, \
++	{ MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \
++	{ MOD, XK_q,     ACTION##stack, {.i = 0 } }, \
++	{ MOD, XK_a,     ACTION##stack, {.i = 1 } }, \
++	{ MOD, XK_z,     ACTION##stack, {.i = 2 } }, \
++	{ MOD, XK_x,     ACTION##stack, {.i = -1 } },
+ 
+ /* helper for spawning shell commands in the pre dwm-5.0 fashion */
+ #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+@@ -64,8 +72,8 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+ 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+ 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
++	STACKKEYS(MODKEY,                          focus)
++	STACKKEYS(MODKEY|ShiftMask,                push)
+ 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+ 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+ 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+@@ -93,7 +101,7 @@ static Key keys[] = {
+ 	TAGKEYS(                        XK_7,                      6)
+ 	TAGKEYS(                        XK_8,                      7)
+ 	TAGKEYS(                        XK_9,                      8)
+-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
++	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
+ };
+ 
+ /* button definitions */
+diff --git a/dwm.c b/dwm.c
+index 9fd0286..6c302c3 100644
+--- a/dwm.c
++++ b/dwm.c
 @@ -47,15 +47,21 @@
  /* macros */
  #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
@@ -141,3 +192,6 @@
  void
  tag(const Arg *arg)
  {
+-- 
+2.26.2
+
