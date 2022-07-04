@@ -1,0 +1,247 @@
+dwm.c:		unfocus(selmon->sel, 1);
+dwm.c:	if (ev->window == selmon->barwin) {
+dwm.c:		else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
+dwm.c:	selmon->lt[selmon->sellt] = &foo;
+dwm.c:		if (c != selmon->sel && !c->isurgent)
+dwm.c:		else if (c->isfloating || !selmon->lt[selmon->sellt]->arrange) {
+dwm.c:		if (!(m = selmon->next))
+dwm.c:				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+dwm.c:		unfocus(selmon->sel, 1);
+dwm.c:	} else if (!c || c == selmon->sel)
+dwm.c:		for (c = selmon->stack; c && !ISVISIBLE(c); c = c->snext);
+dwm.c:	if (selmon->sel && selmon->sel != c)
+dwm.c:		unfocus(selmon->sel, 0);
+dwm.c:	selmon->sel = c;
+dwm.c:	if (selmon->sel && ev->window != selmon->sel->win)
+dwm.c:		setfocus(selmon->sel);
+dwm.c:	unfocus(selmon->sel, 0);
+dwm.c:	if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
+dwm.c:		for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
+dwm.c:			for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
+dwm.c:		for (i = selmon->clients; i != selmon->sel; i = i->next)
+dwm.c:	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
+dwm.c:	if (!selmon->sel)
+dwm.c:	if (!sendevent(selmon->sel->win, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) {
+dwm.c:		XKillClient(dpy, selmon->sel->win);
+dwm.c:		unfocus(selmon->sel, 0);
+dwm.c:		unfocus(selmon->sel, 1);
+dwm.c:	if (!(c = selmon->sel))
+dwm.c:			if (abs(selmon->wx - nx) < snap)
+dwm.c:				nx = selmon->wx;
+dwm.c:			else if (abs((selmon->wx + selmon->ww) - (nx + WIDTH(c))) < snap)
+dwm.c:				nx = selmon->wx + selmon->ww - WIDTH(c);
+dwm.c:			if (abs(selmon->wy - ny) < snap)
+dwm.c:				ny = selmon->wy;
+dwm.c:			else if (abs((selmon->wy + selmon->wh) - (ny + HEIGHT(c))) < snap)
+dwm.c:				ny = selmon->wy + selmon->wh - HEIGHT(c);
+dwm.c:			if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
+dwm.c:			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
+dwm.c:	if (!(c = selmon->sel))
+dwm.c:			if (c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
+dwm.c:			&& c->mon->wy + nh >= selmon->wy && c->mon->wy + nh <= selmon->wy + selmon->wh)
+dwm.c:				if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
+dwm.c:			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
+dwm.c:	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
+dwm.c:		selmon->sellt ^= 1;
+dwm.c:		selmon->lt[selmon->sellt] = (Layout *)arg->v;
+dwm.c:	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
+dwm.c:	if (selmon->sel)
+dwm.c:	c = selmon->sel;
+dwm.c:	if(!arg || !c || !selmon->lt[selmon->sellt]->arrange)
+dwm.c:	if (!arg || !selmon->lt[selmon->sellt]->arrange)
+dwm.c:	f = arg->f < 1.0 ? arg->f + selmon->mfact : arg->f - 1.0;
+dwm.c:	selmon->mfact = f;
+dwm.c:		dmenumon[0] = '0' + selmon->num;
+dwm.c:	if (selmon->sel && arg->ui & TAGMASK) {
+dwm.c:		selmon->sel->tags = arg->ui & TAGMASK;
+dwm.c:	if (!selmon->sel || !mons->next)
+dwm.c:	sendmon(selmon->sel, dirtomon(arg->i));
+dwm.c:	selmon->showbar = !selmon->showbar;
+dwm.c:		if (!selmon->showbar)
+dwm.c:		else if (selmon->showbar) {
+dwm.c:			if (!selmon->topbar)
+dwm.c:				wc.y = selmon->mh - bh;
+dwm.c:	if (!selmon->sel)
+dwm.c:	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
+dwm.c:	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
+dwm.c:	if (selmon->sel->isfloating)
+dwm.c:		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
+dwm.c:			selmon->sel->w, selmon->sel->h, 0);
+dwm.c:	if (!selmon->sel)
+dwm.c:	newtags = selmon->sel->tags ^ (arg->ui & TAGMASK);
+dwm.c:		selmon->sel->tags = newtags;
+dwm.c:	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
+dwm.c:		selmon->tagset[selmon->seltags] = newtagset;
+dwm.c:		if (c == selmon->sel && wmh->flags & XUrgencyHint) {
+dwm.c:	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+dwm.c:	selmon->seltags ^= 1; /* toggle sel tagset */
+dwm.c:		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+dwm.c:	Client *c = selmon->sel;
+dwm.c:	if (!selmon->lt[selmon->sellt]->arrange
+dwm.c:	|| (selmon->sel && selmon->sel->isfloating))
+dwm.c:	if (c == nexttiled(selmon->clients))
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	c = selmon->sel;
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	if(!arg || !c || !selmon->lt[selmon->sellt]->arrange)
+dwm-cfacts-vanitygaps-6.2_combo.diff: 	sendmon(selmon->sel, dirtomon(arg->i));
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	selmon->gappoh = oh;
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	selmon->gappov = ov;
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	selmon->gappih = ih;
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	selmon->gappiv = iv;
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	selmon->pertag->enablegaps[selmon->pertag->curtag] = !selmon->pertag->enablegaps[selmon->pertag->curtag];
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv + arg->i
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv + arg->i
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih + arg->i,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappoh,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappov,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappih,
+dwm-cfacts-vanitygaps-6.2_combo.diff:+		selmon->gappiv + arg->i
+dwm-cfacts-vanitygaps-6.2_combo.diff:+	oe = ie = selmon->pertag->enablegaps[selmon->pertag->curtag];
+dwm.c.orig:		unfocus(selmon->sel, 1);
+dwm.c.orig:	if (ev->window == selmon->barwin) {
+dwm.c.orig:		else if (ev->x > (x = selmon->ww - TEXTW(stext) + lrpad)) {
+dwm.c.orig:	selmon->lt[selmon->sellt] = &foo;
+dwm.c.orig:		if (c != selmon->sel && !c->isurgent)
+dwm.c.orig:		else if (c->isfloating || !selmon->lt[selmon->sellt]->arrange) {
+dwm.c.orig:		if (!(m = selmon->next))
+dwm.c.orig:				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+dwm.c.orig:		unfocus(selmon->sel, 1);
+dwm.c.orig:	} else if (!c || c == selmon->sel)
+dwm.c.orig:		for (c = selmon->stack; c && !ISVISIBLE(c); c = c->snext);
+dwm.c.orig:	if (selmon->sel && selmon->sel != c)
+dwm.c.orig:		unfocus(selmon->sel, 0);
+dwm.c.orig:	selmon->sel = c;
+dwm.c.orig:	if (selmon->sel && ev->window != selmon->sel->win)
+dwm.c.orig:		setfocus(selmon->sel);
+dwm.c.orig:	unfocus(selmon->sel, 0);
+dwm.c.orig:	if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
+dwm.c.orig:		for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
+dwm.c.orig:			for (c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
+dwm.c.orig:		for (i = selmon->clients; i != selmon->sel; i = i->next)
+dwm.c.orig:	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
+dwm.c.orig:	if (!selmon->sel)
+dwm.c.orig:	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
+dwm.c.orig:		XKillClient(dpy, selmon->sel->win);
+dwm.c.orig:		unfocus(selmon->sel, 0);
+dwm.c.orig:		unfocus(selmon->sel, 1);
+dwm.c.orig:	if (!(c = selmon->sel))
+dwm.c.orig:			if (abs(selmon->wx - nx) < snap)
+dwm.c.orig:				nx = selmon->wx;
+dwm.c.orig:			else if (abs((selmon->wx + selmon->ww) - (nx + WIDTH(c))) < snap)
+dwm.c.orig:				nx = selmon->wx + selmon->ww - WIDTH(c);
+dwm.c.orig:			if (abs(selmon->wy - ny) < snap)
+dwm.c.orig:				ny = selmon->wy;
+dwm.c.orig:			else if (abs((selmon->wy + selmon->wh) - (ny + HEIGHT(c))) < snap)
+dwm.c.orig:				ny = selmon->wy + selmon->wh - HEIGHT(c);
+dwm.c.orig:			if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
+dwm.c.orig:			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
+dwm.c.orig:	if (!(c = selmon->sel))
+dwm.c.orig:			if (c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
+dwm.c.orig:			&& c->mon->wy + nh >= selmon->wy && c->mon->wy + nh <= selmon->wy + selmon->wh)
+dwm.c.orig:				if (!c->isfloating && selmon->lt[selmon->sellt]->arrange
+dwm.c.orig:			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
+dwm.c.orig:	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
+dwm.c.orig:		selmon->sellt ^= 1;
+dwm.c.orig:		selmon->lt[selmon->sellt] = (Layout *)arg->v;
+dwm.c.orig:	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
+dwm.c.orig:	if (selmon->sel)
+dwm.c.orig:	c = selmon->sel;
+dwm.c.orig:	if(!arg || !c || !selmon->lt[selmon->sellt]->arrange)
+dwm.c.orig:	if (!arg || !selmon->lt[selmon->sellt]->arrange)
+dwm.c.orig:	f = arg->f < 1.0 ? arg->f + selmon->mfact : arg->f - 1.0;
+dwm.c.orig:	selmon->mfact = f;
+dwm.c.orig:		dmenumon[0] = '0' + selmon->num;
+dwm.c.orig:	if (selmon->sel && arg->ui & TAGMASK) {
+dwm.c.orig:		selmon->sel->tags = arg->ui & TAGMASK;
+dwm.c.orig:	if (!selmon->sel || !mons->next)
+dwm.c.orig:	sendmon(selmon->sel, dirtomon(arg->i));
+dwm.c.orig:	selmon->showbar = !selmon->showbar;
+dwm.c.orig:	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+dwm.c.orig:	if (!selmon->sel)
+dwm.c.orig:	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
+dwm.c.orig:	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
+dwm.c.orig:	if (selmon->sel->isfloating)
+dwm.c.orig:		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
+dwm.c.orig:			selmon->sel->w, selmon->sel->h, 0);
+dwm.c.orig:	if (!selmon->sel)
+dwm.c.orig:	newtags = selmon->sel->tags ^ (arg->ui & TAGMASK);
+dwm.c.orig:		selmon->sel->tags = newtags;
+dwm.c.orig:	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
+dwm.c.orig:		selmon->tagset[selmon->seltags] = newtagset;
+dwm.c.orig:		if (c == selmon->sel && wmh->flags & XUrgencyHint) {
+dwm.c.orig:	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+dwm.c.orig:	selmon->seltags ^= 1; /* toggle sel tagset */
+dwm.c.orig:		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+dwm.c.orig:	Client *c = selmon->sel;
+dwm.c.orig:	if (!selmon->lt[selmon->sellt]->arrange
+dwm.c.orig:	|| (selmon->sel && selmon->sel->isfloating))
+dwm.c.orig:	if (c == nexttiled(selmon->clients))
+dwm.c.rej:-		else if (ev->x > selmon->ww - (int)TEXTW(stext))
+dwm.c.rej:+		else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
+dwm-statuscmd-signal-6.2.diff:-		else if (ev->x > selmon->ww - TEXTW(stext))
+dwm-statuscmd-signal-6.2.diff:+		else if (ev->x > (x = selmon->ww - TEXTW(stext) + lrpad)) {
+dwm-systray-6.3.diff:-		else if (ev->x > selmon->ww - (int)TEXTW(stext))
+dwm-systray-6.3.diff:+		else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
+dwm-systray-6.3.diff: 	if (!selmon->sel)
+dwm-systray-6.3.diff:-	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
+dwm-systray-6.3.diff:+	if (!sendevent(selmon->sel->win, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) {
+dwm-systray-6.3.diff: 	selmon->showbar = !selmon->showbar;
+dwm-systray-6.3.diff:-	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+dwm-systray-6.3.diff:+		if (!selmon->showbar)
+dwm-systray-6.3.diff:+		else if (selmon->showbar) {
+dwm-systray-6.3.diff:+			if (!selmon->topbar)
+dwm-systray-6.3.diff:+				wc.y = selmon->mh - bh;
+vanitygaps.c:	selmon->gappoh = oh;
+vanitygaps.c:	selmon->gappov = ov;
+vanitygaps.c:	selmon->gappih = ih;
+vanitygaps.c:	selmon->gappiv = iv;
+vanitygaps.c:	selmon->pertag->enablegaps[selmon->pertag->curtag] = !selmon->pertag->enablegaps[selmon->pertag->curtag];
+vanitygaps.c:		selmon->gappoh + arg->i,
+vanitygaps.c:		selmon->gappov + arg->i,
+vanitygaps.c:		selmon->gappih + arg->i,
+vanitygaps.c:		selmon->gappiv + arg->i
+vanitygaps.c:		selmon->gappoh,
+vanitygaps.c:		selmon->gappov,
+vanitygaps.c:		selmon->gappih + arg->i,
+vanitygaps.c:		selmon->gappiv + arg->i
+vanitygaps.c:		selmon->gappoh + arg->i,
+vanitygaps.c:		selmon->gappov + arg->i,
+vanitygaps.c:		selmon->gappih,
+vanitygaps.c:		selmon->gappiv
+vanitygaps.c:		selmon->gappoh + arg->i,
+vanitygaps.c:		selmon->gappov,
+vanitygaps.c:		selmon->gappih,
+vanitygaps.c:		selmon->gappiv
+vanitygaps.c:		selmon->gappoh,
+vanitygaps.c:		selmon->gappov + arg->i,
+vanitygaps.c:		selmon->gappih,
+vanitygaps.c:		selmon->gappiv
+vanitygaps.c:		selmon->gappoh,
+vanitygaps.c:		selmon->gappov,
+vanitygaps.c:		selmon->gappih + arg->i,
+vanitygaps.c:		selmon->gappiv
+vanitygaps.c:		selmon->gappoh,
+vanitygaps.c:		selmon->gappov,
+vanitygaps.c:		selmon->gappih,
+vanitygaps.c:		selmon->gappiv + arg->i
+vanitygaps.c:	oe = ie = selmon->pertag->enablegaps[selmon->pertag->curtag];
