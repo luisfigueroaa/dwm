@@ -1,5 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "st"
+#define TERMCLASS "St"
+
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -37,7 +41,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Pavucontrol",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
@@ -144,13 +148,15 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
-	{ MODKEY,			XK_e,	spawn,		SHCMD("thunar") },
-	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
 	{ 0, XF86XK_AudioPrev,		spawn,		{.v = (const char*[]){ "mpc", "prev", NULL } } },
 	{ 0, XF86XK_AudioNext,		spawn,		{.v = (const char*[]){ "mpc",  "next", NULL } } },
 	{ 0, XF86XK_AudioPlay,		spawn,		{.v = (const char*[]){ "mpc", "toggle", NULL } } },
 	{ 0, XF86XK_AudioStop,		spawn,		{.v = (const char*[]){ "mpc", "stop", NULL } } },
+	{ 0, XF86XK_Tools,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
+	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
+	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
+	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
+	{ MODKEY,			XK_ntilde,	spawn,		SHCMD("") },
 };
 
 /* button definitions */
