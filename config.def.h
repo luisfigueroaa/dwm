@@ -169,15 +169,15 @@ static Key keys[] = {
 	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
 	{ MODKEY,			XK_Tab,           shiftview,  { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Tab,           shiftview,  { .i = -1 } },
-	{ 0, XK_Print,			spawn,		SHCMD('maim "/home/$USER/Imágenes/$(date).png"') },
-	{ MODKEY, XK_Print,		spawn,		SHCMD('maim --window $(xdotool getactivewindow) "/home/$USER/Imágenes/$(date).png"') },
-	{ ShiftMask, XK_Print,		spawn,		SHCMD('maim --select --hidecursor "/home/$USER/Imágenes/$(date).png" Screenshots') },
+	{ 0, XK_Print,			spawn,		SHCMD("maim $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
+	{ MODKEY, XK_Print,		spawn,		SHCMD("maim --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
+	{ ShiftMask, XK_Print,		spawn,		SHCMD("maim --select --hidecursor $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
 	{ ControlMask, XK_Print,		spawn,		SHCMD("maim | xclip -selection clipboard -t image/png") },
 	{ ControlMask|MODKEY, XK_Sys_Req,		spawn,		SHCMD("maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png") },
 	{ ControlMask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --select --hidecursor | xclip -selection clipboard -t image/png") },
-	{ Mod4Mask, XK_Print,		spawn,		SHCMD('maim --delay 2 "/home/$USER/Imágenes/$(date).png"') },
-	{ Mod4Mask|MODKEY, XK_Print,		spawn,		SHCMD('maim --delay 2 --window $(xdotool getactivewindow) "/home/$USER/Imágenes/$(date).png"') },
-	{ Mod4Mask|ShiftMask, XK_Print,		spawn,		SHCMD('maim --delay 2 --select "/home/$USER/Imágenes/$(date).png" Screenshots') },
+	{ Mod4Mask, XK_Print,		spawn,		SHCMD("maim --delay 2 $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
+	{ Mod4Mask|MODKEY, XK_Print,		spawn,		SHCMD("maim --delay 2 --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
+	{ Mod4Mask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --delay 2 --select $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
 };
 
 /* button definitions */
