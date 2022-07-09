@@ -104,7 +104,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
-#include "shiftview.c"
+/*#include "shiftview.c"*/
+#include "shiftviewclients.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -173,8 +174,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ranger", NULL } } },	
 	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
-	{ MODKEY,			XK_Tab,           shiftview,  { .i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Tab,           shiftview,  { .i = -1 } },
+	{ MODKEY,			XK_Tab,           shiftviewclients,  { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Tab,           shiftviewclients,  { .i = -1 } },
 	{ 0, XK_Print,			spawn,		SHCMD("maim $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ MODKEY, XK_Print,		spawn,		SHCMD("maim --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask, XK_Print,		spawn,		SHCMD("maim --select --hidecursor $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
