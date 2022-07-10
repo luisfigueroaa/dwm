@@ -46,8 +46,8 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Steam",  NULL,       NULL,       1 << 8,       1,           -1 },
 	{ "Steam",  NULL,       "Steam",       1 << 8,       0,           -1 },
-	{ "Thunderbird",  NULL,       NULL,       1 << 7,       0,           -1 },
-	{ "Thunderbird",  "Msgcompose",       NULL,       1 << 7,       1,           -1 },
+	{ "Thunderbird",  NULL,       NULL,       1 << 7,       1,           -1 },
+	{ "Thunderbird",  "Mail",       NULL,       1 << 7,       0,           -1 },
 	{ "Virt-manager",  NULL,       "Gestor de máquinas virtuales",       1 << 6,       1,           -1 },
 };
 
@@ -104,7 +104,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
-#include "shiftview.c"
+/*#include "shiftview.c"*/
+#include "shiftviewclients.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -174,9 +175,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ranger", NULL } } },	
-	{ MODKEY,			XK_Num_Lock,	spawn,		SHCMD("dmenupoweroff") },
-	{ MODKEY,			XK_Tab,           shiftview,  { .i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Tab,           shiftview,  { .i = -1 } },
+	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
+	{ MODKEY,			XK_Tab,           shiftviewclients,  { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Tab,           shiftviewclients,  { .i = -1 } },
 	{ 0, XK_Print,			spawn,		SHCMD("maim $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ MODKEY, XK_Print,		spawn,		SHCMD("maim --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask, XK_Print,		spawn,		SHCMD("maim --select --hidecursor $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
