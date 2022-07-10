@@ -175,7 +175,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ranger", NULL } } },	
-	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
+	{ MODKEY,			XK_Num_Lock,	spawn,		SHCMD("dmenupoweroff") },
 	{ MODKEY,			XK_Tab,           shiftviewclients,  { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Tab,           shiftviewclients,  { .i = -1 } },
 	{ 0, XK_Print,			spawn,		SHCMD("maim $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
