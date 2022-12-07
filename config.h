@@ -46,9 +46,10 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Steam",  NULL,       NULL,       1 << 8,       1,           -1 },
 	{ "Steam",  NULL,       "Steam",       1 << 8,       0,           -1 },
-	{ "Thunderbird",  NULL,       NULL,       1 << 7,       1,           -1 },
-	{ "Thunderbird",  "Mail",       NULL,       1 << 7,       0,           -1 },
+	{ "thunderbird",  NULL,       NULL,       1 << 7,       1,           -1 },
+	{ "thunderbird",  "Mail",       NULL,       1 << 7,       0,           -1 },
 	{ "Virt-manager",  NULL,       "Gestor de máquinas virtuales",       1 << 6,       1,           -1 },
+	{ "Galculator",  NULL,       NULL,       0,       1,           -1 },
 };
 
 /* layout(s) */
@@ -109,7 +110,8 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	/*{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },*/
+	{ MODKEY,                       XK_p,      spawn,          {.v = (const char*[]){ "j4-dmenu-desktop", NULL } } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
@@ -185,6 +187,8 @@ static Key keys[] = {
 	{ Mod4Mask, XK_Print,		spawn,		SHCMD("maim --delay 2 $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ Mod4Mask|MODKEY, XK_Print,		spawn,		SHCMD("maim --delay 2 --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ Mod4Mask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --delay 2 --select $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
+	{ Mod4Mask,			XK_r,	spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
+	{ Mod4Mask|ShiftMask,		XK_r,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 };
 
 /* button definitions */
