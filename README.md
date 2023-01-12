@@ -11,7 +11,7 @@ Those are some of my patches:
 
 Also I fixed transparency border issue with this:
 
-![./images/fix-transparent-borders.png]()
+![images/fix-transparent-borders.png]()
 
 Thanks to [https://github.com/szatanjl/dwm/commit/1529909466206016f2101457bbf37c67195714c8?diff=split](szatanjl).
 
@@ -19,4 +19,4 @@ P.D.: Oh and don't forget to include `#include <X11/XF86keysym.h>` inside your c
 
 # Screenshot
 
-![./images/screenshot.png]().
+![images/screenshot.png]().
