@@ -1,6 +1,6 @@
 # My DWM Version
 
-Those are some of my patches:
+## Patches
 
 - [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/).
 - [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/).
@@ -17,6 +17,6 @@ Thanks to [szatanjl](https://github.com/szatanjl/dwm/commit/1529909466206016f210
 
 P.D.: Oh and don't forget to include `#include <X11/XF86keysym.h>` inside your config.def.h file in order to use your multimedia keys.
 
-# Screenshot
+## Screenshot
 
 ![](images/screenshot.png)
