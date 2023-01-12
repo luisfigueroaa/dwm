@@ -19,4 +19,4 @@ P.D.: Oh and don't forget to include `#include <X11/XF86keysym.h>` inside your c
 
 # Screenshot
 
-![](images/screenshot.png).
+![](images/screenshot.png)
