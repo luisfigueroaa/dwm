@@ -1,4 +1,4 @@
-# My DWM Version
+# My DWM Version for my laptop (tatooine)
 
 ## Requirements
 
