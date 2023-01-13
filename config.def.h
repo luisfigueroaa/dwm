@@ -46,15 +46,15 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Steam",  NULL,       NULL,       1 << 8,       1,           -1 },
 	{ "Steam",  NULL,       "Steam",       1 << 8,       0,           -1 },
-	{ "Thunderbird",  NULL,       NULL,       1 << 7,       1,           -1 },
-	{ "Thunderbird",  "Mail",       NULL,       1 << 7,       0,           -1 },
+	{ "thunderbird",  NULL,       NULL,       1 << 7,       1,           -1 },
+	{ "thunderbird",  "Mail",       NULL,       1 << 7,       0,           -1 },
 	{ "Virt-manager",  NULL,       "Gestor de máquinas virtuales",       1 << 6,       1,           -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -104,12 +104,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
-/*#include "shiftview.c"*/
+#include "shiftview.c"
 #include "shiftviewclients.c"
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,	    {.v = (const char*[]){ "j4-dmenu-desktop", NULL } } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
@@ -175,7 +176,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("switch-sink") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("thunar") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ranger", NULL } } },	
-	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
+	{ MODKEY,			XK_Num_Lock,	spawn,		SHCMD("dmenupoweroff") },
 	{ MODKEY,			XK_Tab,           shiftviewclients,  { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Tab,           shiftviewclients,  { .i = -1 } },
 	{ 0, XK_Print,			spawn,		SHCMD("maim $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
@@ -187,6 +188,8 @@ static Key keys[] = {
 	{ Mod4Mask, XK_Print,		spawn,		SHCMD("maim --delay 2 $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ Mod4Mask|MODKEY, XK_Print,		spawn,		SHCMD("maim --delay 2 --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ Mod4Mask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --delay 2 --select $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
+	{ Mod4Mask, XK_r,		spawn,		SHCMD("dmenurecord") },
+	{ Mod4Mask|ShiftMask, XK_r,		spawn,		SHCMD("dmenurecord -kill") },
 };
 
 /* button definitions */
