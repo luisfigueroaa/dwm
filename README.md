@@ -23,6 +23,15 @@ Thanks to [szatanjl](https://github.com/szatanjl/dwm/commit/1529909466206016f210
 
 P.D.: Oh and don't forget to include `#include <X11/XF86keysym.h>` inside your config.def.h file in order to use your multimedia keys.
 
+## Some keybindings
+
+    mod1 == alt
+    mod4 == super
+
+    mod1 + p = dmenu_run
+    mod4 + r = dmenurecord
+    mod4 + s = dmenu scripts
+
 ## How to update
 
 Please search "Updating customizations after new release" in [dwm page](https://dwm.suckless.org/customisation/patches_in_git/).
