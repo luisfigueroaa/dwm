@@ -14,6 +14,7 @@ No longer needs the "patch" with color emojis since [16 sep commit](https://git.
 - [actualfullscreen](https://dwm.suckless.org/patches/actualfullscreen/).
 - [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/).
 - [systray](https://dwm.suckless.org/patches/systray/).
+- [stacker](https://dwm.suckless.org/patches/stacker/): allows to move with Shift+j or Shift+k vertically.
 
 Also I fixed transparency border issue with this:
 
