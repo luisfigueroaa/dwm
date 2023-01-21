@@ -189,8 +189,10 @@ static Key keys[] = {
 	{ Mod4Mask, XK_Print,		spawn,		SHCMD("maim --delay 2 $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ Mod4Mask|MODKEY, XK_Print,		spawn,		SHCMD("maim --delay 2 --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
 	{ Mod4Mask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --delay 2 --select $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
-	{ Mod4Mask, XK_r,		spawn,		SHCMD("dmenurecord") },
-	{ Mod4Mask|ShiftMask, XK_r,		spawn,		SHCMD("dmenurecord -kill") },
+	{ Mod4Mask,			XK_r,	spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
+	{ Mod4Mask|ShiftMask,		XK_r,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+	{ Mod4Mask,			XK_w,	spawn,		{.v = (const char*[]){ "dmenuwallpaper", NULL } } },
+	{ Mod4Mask,			XK_s,	spawn,		SHCMD("ls $HOME/.local/bin/ | grep --regexp '^dmenu' | dmenu -p 'dmenu script list' -l 10 | /bin/sh") },
 };
 
 /* button definitions */
