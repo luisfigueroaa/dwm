@@ -111,7 +111,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	/*{ MODKEY|ShiftMask,                       XK_p,      spawn,          {.v = dmenucmd } },*/
-      	{ MODKEY,                       XK_p,      spawn,          {.v = (const char*[]){ "j4-dmenu-desktop", NULL } } },
+      	{ MODKEY,                       XK_p,      spawn,       SHCMD("j4-dmenu-desktop --dmenu='dmenu -l 10'") },
  	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
@@ -178,17 +178,14 @@ static Key keys[] = {
 	{ MODKEY,			XK_Pause,	spawn,		SHCMD("dmenupoweroff") },
 	{ MODKEY,			XK_Tab,           shiftviewclients,  { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Tab,           shiftviewclients,  { .i = -1 } },
-	{ 0, XK_Print,			spawn,		SHCMD("maim $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
-	{ MODKEY, XK_Print,		spawn,		SHCMD("maim --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
-	{ ShiftMask, XK_Print,		spawn,		SHCMD("maim --select --hidecursor $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
-	{ ControlMask, XK_Print,		spawn,		SHCMD("maim | xclip -selection clipboard -t image/png") },
-	{ ControlMask|MODKEY, XK_Sys_Req,		spawn,		SHCMD("maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png") },
-	{ ControlMask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --select --hidecursor | xclip -selection clipboard -t image/png") },
-	{ Mod4Mask, XK_Print,		spawn,		SHCMD("maim --delay 2 $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
-	{ Mod4Mask|MODKEY, XK_Print,		spawn,		SHCMD("maim --delay 2 --window $(xdotool getactivewindow) $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png") },
-	{ Mod4Mask|ShiftMask, XK_Print,		spawn,		SHCMD("maim --delay 2 --select $HOME/Imágenes/$(date '+%y%m%d-%H%M-%S').png Screenshots") },
-	{ Mod4Mask,			XK_r,	spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
-	{ Mod4Mask|ShiftMask,		XK_r,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+
+    { 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ ShiftMask,			XK_Print,	spawn,		{.v = (const char*[]){ "maimpick", NULL } } },
+	{ MODKEY,			XK_Print,	spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
+	{ MODKEY|ShiftMask,		XK_Print,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+	{ MODKEY,			XK_Delete,	spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+	{ MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
+
 	{ Mod4Mask,			XK_w,	spawn,		{.v = (const char*[]){ "dmenuwallpaper", NULL } } },
 	{ Mod4Mask,			XK_s,	spawn,		SHCMD("ls $HOME/.local/bin/ | grep --regexp '^dmenu' | dmenu -p 'dmenu script list' -l 10 | /bin/sh") },
 };
